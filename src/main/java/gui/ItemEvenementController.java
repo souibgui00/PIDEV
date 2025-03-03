@@ -107,7 +107,7 @@ public class ItemEvenementController implements Initializable {
     }
 
     @FXML
-    void supprimerEvenement(ActionEvent event) throws SQLException {
+    void supprimerEveement(ActionEvent event) throws SQLException {
         ServiceEvenement cs = new ServiceEvenement();
 
         // Afficher une boîte de dialogue de confirmation

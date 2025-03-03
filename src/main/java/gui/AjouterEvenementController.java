@@ -87,25 +87,40 @@ public class AjouterEvenementController implements Initializable {
     void AjoutEvenement(ActionEvent event) {
         if(event.getSource() == btnAddEvenement){
             if (txtLieu.getText().isEmpty() || txtDescription.getText().isEmpty() || txtNom.getText().isEmpty() ||
-                    txtCapacite.getText().isEmpty() || imageName == null)
+                    txtCapacite.getText().isEmpty() || imageName == null || txtDate.getValue() == null)
             {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Information manquante");
                 alert.setHeaderText(null);
-                alert.setContentText("Vous devez remplir tous les détails concernant votre Evenement.");
-                Optional<ButtonType> option = alert.showAndWait();
-
-            } else {
-                ajouterEvenement();
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Ajouté avec succès");
-                alert.setHeaderText(null);
-                alert.setContentText("Votre Evenement a été ajoutée avec succès.");
-                Optional<ButtonType> option = alert.showAndWait();
-                //send_sms();
-                clearFieldsEvenement();
+                alert.setContentText("Vous devez remplir tous les détails concernant votre événement.");
+                alert.showAndWait();
+                return;
             }
+
+            // Vérification de la date
+            LocalDate dateChoisie = txtDate.getValue();
+            LocalDate dateActuelle = LocalDate.now();
+
+            if (!dateChoisie.isAfter(dateActuelle)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Date invalide");
+                alert.setHeaderText(null);
+                alert.setContentText("La date de l'événement doit être ultérieure à aujourd'hui.");
+                alert.showAndWait();
+                return;
+            }
+
+            // Si toutes les conditions sont respectées, on ajoute l'événement
+            ajouterEvenement();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Ajouté avec succès");
+            alert.setHeaderText(null);
+            alert.setContentText("Votre événement a été ajouté avec succès.");
+            alert.showAndWait();
+
+            clearFieldsEvenement();
         }
+
         if(event.getSource() == btnClearEvenement){
             clearFieldsEvenement();
         }
@@ -146,25 +161,28 @@ public class AjouterEvenementController implements Initializable {
         imageInput=null;
     }
 
-    void ajouterEvenement(){
+    void ajouterEvenement() {
         ServiceUtilisateur us = new ServiceUtilisateur();
 
         String nom = txtNom.getText();
         String description = txtDescription.getText();
         String lieu = txtLieu.getText();
-        Date dateEve=null;
+        Date dateEve = null;
+
         try {
             LocalDate localDate = txtDate.getValue();
             if (localDate != null) {
                 Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
                 dateEve = Date.from(instant);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         String statut = "Actif";
         String type = txtType.getValue();
         int capacite_max = Integer.parseInt(txtCapacite.getText());
+
         utilisateur user = null;
         try {
             user = us.getById(1);
@@ -172,10 +190,11 @@ public class AjouterEvenementController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        Evenement c = new Evenement(nom,description,dateEve,lieu,statut,capacite_max,imageName,user,type);
+        Evenement c = new Evenement(nom, description, dateEve, lieu, statut, capacite_max, imageName, user, type);
         ServiceEvenement cs = new ServiceEvenement();
         cs.ajouter(c);
     }
+
 
 
     void send_sms(){

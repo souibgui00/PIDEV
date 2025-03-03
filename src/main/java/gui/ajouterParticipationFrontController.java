@@ -51,16 +51,17 @@ public class ajouterParticipationFrontController implements Initializable {
 
     @FXML
     void ajoutParticipation(ActionEvent event) {
-        // Check if the selected event is null
+        // Vérifier si l'événement sélectionné est nul
         if (selectedEvent == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText(null);
             alert.setContentText("L'événement sélectionné est invalide.");
             alert.showAndWait();
-            return;  // Stop further execution if no valid event is selected
+            return;  // Arrêter l'exécution si l'événement est invalide
         }
 
+        // Vérifier si tous les champs sont remplis
         if (txtDatePart.getValue() == null || txtMoyenP.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Champs manquants");
@@ -70,17 +71,46 @@ public class ajouterParticipationFrontController implements Initializable {
             return;
         }
 
+        // Vérifier la capacité maximale de l'événement avant d'ajouter la participation
+        try {
+            int nbParticipants = sp.getNbParticipationsByIdEvenement(selectedEvent.getId());
+            int capaciteMax = selectedEvent.getCapacite_max(); // Supposons que cette méthode existe dans votre modèle Evenement
+
+            if (nbParticipants >= capaciteMax) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Capacité maximale atteinte");
+                alert.setHeaderText(null);
+                alert.setContentText("L'événement a atteint sa capacité maximale de participants.");
+                alert.showAndWait();
+
+                // Mettre à jour le statut de l'événement pour le marquer comme "complet"
+                selectedEvent.setStatut("Complet");  // Vous devez avoir une méthode pour mettre à jour le statut
+                sp.updateEventStatus(selectedEvent);
+
+                return;  // Ne pas ajouter la participation si la capacité est atteinte
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de vérification");
+            alert.setHeaderText(null);
+            alert.setContentText("Une erreur est survenue lors de la vérification de la capacité.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Ajouter la participation si la capacité n'est pas atteinte
         Date date_inscription = Date.from(Instant.from(txtDatePart.getValue().atStartOfDay(ZoneId.systemDefault())));
         String motif = txtMotif.getText();
         String moyen_p = txtMoyenP.getValue();
 
-        // Forcer l'utilisateur avec l'ID 1 (placeholder)
+        // Créer l'utilisateur avec l'ID 1 (à remplacer par l'utilisateur connecté une fois intégré)
         utilisateur user = new utilisateur();
-        user.setId(1); // Fixe l'ID à 1 (should be the actual logged-in user)
+        user.setId(1);
 
         participation p = new participation(user, selectedEvent, date_inscription, motif, moyen_p);
 
-        // Add participation using the service
+        // Ajouter la participation
         sp.ajouter(p);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -89,8 +119,10 @@ public class ajouterParticipationFrontController implements Initializable {
         alert.setContentText("Votre participation a été enregistrée avec succès !");
         alert.showAndWait();
 
+        // Réinitialiser les champs après l'ajout
         clearFieldsParticipation();
     }
+
 
     @FXML
     void clearFieldsParticipation() {

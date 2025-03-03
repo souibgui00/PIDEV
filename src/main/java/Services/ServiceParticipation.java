@@ -1,5 +1,6 @@
 package Services;
 
+import Models.Evenement;
 import Models.participation;
 import tools.MyDataBase;
 import java.sql.Statement;
@@ -119,6 +120,19 @@ public class ServiceParticipation implements crudParticipation<participation> {
             e.printStackTrace();
         }
         return s;
+    }
+
+    public void updateEventStatus(Evenement event) {
+        String req = "UPDATE evenement SET statut = ? WHERE id = ?";
+        try {
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setString(1, event.getStatut()); // "Complet"
+            pst.setInt(2, event.getId());
+            pst.executeUpdate();
+            System.out.println("Statut de l'événement mis à jour !");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
