@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemParticipationPane" prefHeight="52.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ItemParticipationController">
+    <children>
+        <HBox prefHeight="52.0" prefWidth="959.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelUser" prefHeight="22.0" prefWidth="110.0" styleClass="label-item" stylesheets="@style.css" text="User">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Label fx:id="labelEvent" prefHeight="22.0" prefWidth="142.0" styleClass="label-item" stylesheets="@style.css" text="Evenement">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Label fx:id="labelDate" prefHeight="22.0" prefWidth="139.0" styleClass="label-item" stylesheets="@style.css" text="Date">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelMotif" prefHeight="22.0" prefWidth="182.0" styleClass="label-item" stylesheets="@style.css" text="Motif Annulation">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Label fx:id="labelMoyP" prefHeight="22.0" prefWidth="131.0" styleClass="label-item" stylesheets="@style.css" text="Moyen Paiement">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="38.0" />
+                <Button fx:id="btnModifierParticipation" mnemonicParsing="false" onAction="#open_UpdateParticipation" prefHeight="32.0" prefWidth="44.0" styleClass="btn-update" stylesheets="@style.css">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </Button>
+                <Pane prefHeight="52.0" prefWidth="18.0" />
+                <Button fx:id="btnSupprimerParticipation" mnemonicParsing="false" onAction="#supprimerParticipation" prefHeight="32.0" prefWidth="44.0" styleClass="btn-delete" stylesheets="@style.css">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

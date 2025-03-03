@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="418.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ajouterParticipationFrontController">
+    <children>
+        <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@img/postule.jpg" />
+            </image>
+        </ImageView>
+        <VBox layoutX="100.0" layoutY="100.0" prefHeight="266.0" prefWidth="442.0" spacing="15">
+            <children>
+                <Label styleClass="label-item" stylesheets="@style.css" text="Participer à l'événement">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <Pane prefHeight="0.0" prefWidth="442.0" />
+                <HBox spacing="10">
+                    <Label text="Date de participation:" />
+               <Pane prefHeight="26.0" prefWidth="49.0" />
+                    <DatePicker fx:id="txtDatePart" prefHeight="26.0" prefWidth="170.0" styleClass="textfield" stylesheets="@style.css" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Motif (optionnel):" />
+               <Pane prefHeight="26.0" prefWidth="74.0" />
+                    <TextField fx:id="txtMotif" prefHeight="26.0" prefWidth="167.0" promptText="Motif Annulation" styleClass="textfield" stylesheets="@style.css" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Moyen de paiement:" />
+               <Pane prefHeight="26.0" prefWidth="57.0" />
+                    <ComboBox fx:id="txtMoyenP" prefHeight="26.0" prefWidth="167.0" styleClass="comboBox" stylesheets="@style.css" />
+                </HBox>
+            <Pane prefHeight="28.0" prefWidth="442.0" />
+                <HBox spacing="10">
+                    <Button fx:id="btnCancel" onAction="#clearFieldsParticipation" styleClass="btn" stylesheets="@style.css" text="Annuler" />
+               <Pane prefHeight="66.0" prefWidth="16.0" />
+                    <Button fx:id="btnAddParticipation" onAction="#ajoutParticipation" styleClass="btn" stylesheets="@style.css" text="Participer" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

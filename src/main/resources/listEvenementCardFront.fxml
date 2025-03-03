@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="250.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.listEvenementCardFrontController">
+
+    <children>
+        <VBox fx:id="vboxContainer" alignment="CENTER" layoutY="16.0" prefHeight="262.0" prefWidth="258.0" styleClass="vbox-container" stylesheets="@style.css">
+
+            <children>
+            <ImageView fx:id="imageEvent" fitHeight="105.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" />
+                <!-- Nom de l'Événement -->
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="360.0" styleClass="hbox-title" stylesheets="@style.css">
+                    <children>
+                        <Label fx:id="labelNomEvent" contentDisplay="CENTER" prefHeight="40.0" prefWidth="340.0" style="-fx-alignment: center;" styleClass="label-title" stylesheets="@style.css" text="Nom de l'Événement" textAlignment="CENTER" textFill="#1E3A8A" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+                            <font>
+                                <Font name="Cambria Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <!-- Date de l'Événement -->
+                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0" styleClass="hbox-text" stylesheets="@style.css">
+                    <children>
+                        <Label fx:id="labelDateEvent" styleClass="label-text" stylesheets="@style.css" text="Date: JJ/MM/AAAA">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <!-- Lieu de l'Événement -->
+                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0" styleClass="hbox-text" stylesheets="@style.css">
+                    <children>
+                        <Label fx:id="labelLieuEvent" styleClass="label-text" stylesheets="@style.css" text="Lieu: Ville, Pays">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <!-- Description de l'Événement -->
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="360.0" styleClass="hbox-text" stylesheets="@style.css">
+                    <children>
+                        <Label fx:id="labelDescriptionEvent" styleClass="hbox-text" stylesheets="@style.css" text="Description de l'événement ici..." wrapText="true" />
+                    </children>
+                </HBox>
+                <Button fx:id="btnParticiper" mnemonicParsing="false" onAction="#open_ajouterParticipation" styleClass="Button" stylesheets="@style.css" text="Participer" />
+
+            </children>
+         <opaqueInsets>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </opaqueInsets>
+        </VBox>
+    </children>
+</AnchorPane>

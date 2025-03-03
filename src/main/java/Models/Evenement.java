@@ -1,31 +1,43 @@
 package Models;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
 
 public class Evenement {
-    private int id,nb_participant;
-    private String nom,localisation,description;
+    private int id;
+    private String nom;
+    private String description;
     private Date date;
-    private Time heure;
-    private TypeEvenement type;
+    private String lieu;
+    private String statut;
+    private int capacite_max;
+    private String image;
+    private utilisateur user;
+    private String type;
 
-    public Evenement( String nom, String localisation,  Date date, Time heure,int nb_participant, String description, TypeEvenement type) {
-
-
+    public Evenement(int id, String nom, String description, Date date, String lieu, String statut, int capacite_max, String image, utilisateur user, String type) {
+        this.id = id;
         this.nom = nom;
-        this.localisation = localisation;
-        this.date = date;
-        this.heure = heure;
-        this.nb_participant = nb_participant;
         this.description = description;
+        this.date = date;
+        this.lieu = lieu;
+        this.statut = statut;
+        this.capacite_max = capacite_max;
+        this.image = image;
+        this.user = user;
         this.type = type;
     }
 
-    public Evenement() {
+    public Evenement(String nom, String description, Date date, String lieu, String statut, int capacite_max, String image, utilisateur user, String type) {
+        this.nom = nom;
+        this.description = description;
+        this.date = date;
+        this.lieu = lieu;
+        this.statut = statut;
+        this.capacite_max = capacite_max;
+        this.image = image;
+        this.user = user;
+        this.type = type;
     }
-
-
 
     public int getId() {
         return id;
@@ -35,28 +47,12 @@ public class Evenement {
         this.id = id;
     }
 
-    public int getNb_participant() {
-        return nb_participant;
-    }
-
-    public void setNb_participant(int nb_participant) {
-        this.nb_participant = nb_participant;
-    }
-
     public String getNom() {
         return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getLocalisation() {
-        return localisation;
-    }
-
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
     }
 
     public String getDescription() {
@@ -75,33 +71,51 @@ public class Evenement {
         this.date = date;
     }
 
-    public Time getHeure() {
-        return heure;
+    public String getLieu() {
+        return lieu;
     }
 
-    public void setHeure(Time heure) {
-        this.heure = heure;
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
-    public TypeEvenement getType() {
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public int getCapacite_max() {
+        return capacite_max;
+    }
+
+    public void setCapacite_max(int capacite_max) {
+        this.capacite_max = capacite_max;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getType() {
         return type;
     }
 
-    public void setType(TypeEvenement type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Evenement{" +
-                "id=" + id +
-                ", nb_participant=" + nb_participant +
-                ", nom='" + nom + '\'' +
-                ", localisation='" + localisation + '\'' +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                ", heure=" + heure +
-                ", type=" + type +
-                '}';
+    public utilisateur getUser() {
+        return user;
+    }
+
+    public void setUser(utilisateur user) {
+        this.user = user;
     }
 }

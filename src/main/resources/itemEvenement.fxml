@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemEvenementPane" prefHeight="52.0" prefWidth="1045.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ItemEvenementController">
+    <children>
+        <HBox prefHeight="52.0" prefWidth="1062.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelNom" prefHeight="22.0" prefWidth="138.0" styleClass="label-item" stylesheets="@style.css" text="Nom">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="18.0" />
+                <Label fx:id="labelDate" prefHeight="22.0" prefWidth="118.0" styleClass="label-item" stylesheets="@style.css" text="Date">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="26.0" />
+                <Label fx:id="labelLieu" prefHeight="22.0" prefWidth="107.0" styleClass="label-item" stylesheets="@style.css" text="Lieu">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="26.0" />
+                <Label fx:id="labelStatut" prefHeight="22.0" prefWidth="116.0" styleClass="label-item" stylesheets="@style.css" text="Statut">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="28.0" />
+            <Label fx:id="labelType" prefHeight="18.0" prefWidth="111.0" styleClass="label-item" stylesheets="@style.css" text="Type">
+               <font>
+                  <Font name="Cambria" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Pane prefHeight="52.0" prefWidth="28.0" />
+                <Label fx:id="labelCapaciteMax" prefHeight="22.0" prefWidth="94.0" styleClass="label-item" stylesheets="@style.css" text="Capacite">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="29.0" />
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Button fx:id="btnModifierEvenement" minWidth="49.0" mnemonicParsing="false" onAction="#open_UpdateEvenement" prefHeight="31.0" prefWidth="49.0" styleClass="btn-update" stylesheets="@style.css">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+               <graphic>
+                      <ImageView fx:id="labelImage" fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </Button>
+                <Pane prefHeight="52.0" prefWidth="12.0" />
+                <Button fx:id="btnSupprimerEvenement" minWidth="34.0" mnemonicParsing="false" onAction="#supprimerEveement" prefHeight="32.0" prefWidth="34.0" styleClass="btn-delete" stylesheets="@style.css">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

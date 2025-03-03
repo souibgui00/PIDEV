@@ -1,32 +1,33 @@
 package tests;
 
 import Models.Evenement;
+import Models.participation;
+
 import Services.ServiceEvenement;
-import tools.MyDataBase;
+import Services.ServiceParticipation;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
-import static Models.TypeEvenement.Seminaires;
 import Models.TypeEvenement;
 
-import static Models.TypeEvenement.Seminaires;
 
 public class Main {
     public static void main(String[] args) {
         ServiceEvenement st = new ServiceEvenement();
+        ServiceParticipation sp = new ServiceParticipation();
 
 
-        Evenement e = new Evenement("gatouss", "fst", Date.valueOf("2025-08-02"), Time.valueOf("13:00:00"), 80, "gat", TypeEvenement.Seminaires);
+        //Evenement e = new Evenement("gatouss", "fst", Date.valueOf("2025-08-02"), 22, 80, "gat", "seminaires");
+        //participation p = new participation(1, 3, Date.valueOf("2025-08-02"), "pampam");
+        //st.ajouter(e);
+        // System.out.println(st.recuperer());
+        // st.supprimer(2);
+        //st.modifier(1, "Conférence Internationale", "Paris", Date.valueOf("2025-08-01"), Time.valueOf("10:00:00"), 100, "Nouvelle description", TypeEvenement.Conferences);
+        //System.out.println(st.recuperer());
 
-        try {
-            //st.ajouter(e);
-            System.out.println(st.recuperer());
-           // st.supprimer(2);
-            st.modifier(1, "Conférence Internationale", "Paris", Date.valueOf("2025-08-01"), Time.valueOf("10:00:00"), 100, "Nouvelle description", TypeEvenement.Conferences);
-            System.out.println(st.recuperer());
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
+        //sp.ajouter(p);
+        //sp.modifier(3,Date.valueOf("2025-09-02"),1,1,"en_attente");
 
     }
 }
